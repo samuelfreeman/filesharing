@@ -1,6 +1,8 @@
+'use server'
 export const dynamic = "force-dynamic"
 
 import { auth } from "@clerk/nextjs/server"
+
 import prisma from "@/lib/prisma"
 import { type NextRequest, NextResponse } from "next/server"
 
