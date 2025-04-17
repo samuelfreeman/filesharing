@@ -1,13 +1,12 @@
-'use server'
-
-
 import { auth } from "@clerk/nextjs/server"
-
 import prisma from "@/lib/prisma"
 import { type NextRequest, NextResponse } from "next/server"
 
-export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
-  const { userId } = await auth()
+export async function GET(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  const { userId } = await auth() // Removed await since auth() is synchronous
 
   const file = await prisma.file.findUnique({
     where: { id: params.id },
